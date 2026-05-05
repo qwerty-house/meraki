@@ -153,38 +153,38 @@
             };
 
             const submitToGoogleSheets = async () => {
-                const webAppUrl = "https://script.google.com/macros/s/AKfycbw15BE1NEC1h6_Eq7JPxwNahxX39pCcNE2GyZXI_-747wLSyqhYmuhhBvyXGlNOLAsddg/exec";
-                
-                const payload = {
-                    timestamp: new Date().toLocaleString('th-TH'),
-                    nickname: answers.nickname,
-                    goals: answers.goal.join(', '),
-                    regularity: answers.regularity,
-                    medical_conditions: answers.medical.join(', '),
-                    allergies: answers.allergies.join(', '),
-                    allergy_type: answers.allergyType,
-                    is_pregnant: answers.pregnancy,
-                    birth_control: answers.birthControl,
-                    seriousness_score: answers.seriousness,
-                    phone: answers.contactInfo.phone,
-                    preferred_time: answers.contactInfo.timeSlot,
-                    calculated_result: getResult()
-                };
+    const webAppUrl = "https://script.google.com/macros/s/AKfycbw15BE1NEC1h6_Eq7JPxwNahxX39pCcNE2GyZXI_-747wLSyqhYmuhhBvyXGlNOLAsddg/exec";
+    
+    // ปรับชื่อ KEY ให้ตรงกับที่ Apps Script รอรับ (ตามลำดับคอลัมน์ของคุณ)
+    const payload = {
+        nickname: answers.nickname,
+        goals: answers.goal.join(', '),           // เดิมคือ goal เฉยๆ
+        regularity: answers.regularity,
+        medical_conditions: answers.medical.join(', '),
+        allergies: answers.allergies.join(', '),
+        allergy_type: answers.allergyType,
+        is_pregnant: answers.pregnancy,
+        birth_control: answers.birthControl,
+        seriousness_score: answers.seriousness,
+        phone: answers.contactInfo.phone,
+        preferred_time: answers.contactInfo.timeSlot,
+        calculated_result: getResult()
+    };
 
-                try {
-                    await fetch(webAppUrl, {
-                        method: "POST",
-                        mode: "no-cors", 
-                        headers: {
-                            "Content-Type": "text/plain",
-                        },
-                        body: JSON.stringify(payload)
-                    });
-                    console.log("ส่งข้อมูลสำเร็จ");
-                } catch (err) {
-                    console.error("เกิดข้อผิดพลาด:", err);
-                }
-            };
+    try {
+        await fetch(webAppUrl, {
+            method: "POST",
+            mode: "no-cors", // สำคัญมากสำหรับการส่งจากหน้าเว็บ
+            headers: {
+                "Content-Type": "text/plain",
+            },
+            body: JSON.stringify(payload)
+        });
+        console.log("ส่งข้อมูลสำเร็จ");
+    } catch (err) {
+        console.error("เกิดข้อผิดพลาด:", err);
+    }
+};
 
             const handleFinalSubmit = () => {
                 submitToGoogleSheets();
