@@ -152,13 +152,13 @@
                 return 'STANDARD_PMS';
             };
 
-            const submitToGoogleSheets = async () => {
+    const submitToGoogleSheets = async () => {
+    // 1. ตรวจสอบ URL นี้อีกครั้งหลังกด Deploy (New Version) ทุกครั้ง
     const webAppUrl = "https://script.google.com/macros/s/AKfycbw15BE1NEC1h6_Eq7JPxwNahxX39pCcNE2GyZXI_-747wLSyqhYmuhhBvyXGlNOLAsddg/exec";
     
-    // ปรับชื่อ KEY ให้ตรงกับที่ Apps Script รอรับ (ตามลำดับคอลัมน์ของคุณ)
     const payload = {
         nickname: answers.nickname,
-        goals: answers.goal.join(', '),           // เดิมคือ goal เฉยๆ
+        goals: answers.goal.join(', '),
         regularity: answers.regularity,
         medical_conditions: answers.medical.join(', '),
         allergies: answers.allergies.join(', '),
@@ -172,17 +172,18 @@
     };
 
     try {
+        // ใช้ fetch แบบส่ง Text เพื่อเลี่ยงปัญหา CORS
         await fetch(webAppUrl, {
             method: "POST",
-            mode: "no-cors", // สำคัญมากสำหรับการส่งจากหน้าเว็บ
+            mode: "no-cors", 
             headers: {
                 "Content-Type": "text/plain",
             },
             body: JSON.stringify(payload)
         });
-        console.log("ส่งข้อมูลสำเร็จ");
+        console.log("Data sent to Google Script");
     } catch (err) {
-        console.error("เกิดข้อผิดพลาด:", err);
+        console.error("Fetch Error:", err);
     }
 };
 
