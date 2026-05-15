@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -11,7 +12,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
         body {
             font-family: 'IBM Plex Sans Thai', sans-serif;
@@ -200,7 +200,7 @@
                 const results = {
                     ALLERGY_FORBIDDEN: {
                         title: "โอบกอดความปลอดภัยก่อนนะคะ ⚠️",
-                        description: "แอดมินตรวจเช็กแล้ว พบว่าคุณลูกค้ามีอาการ **แพ้เมล็ดพืชหลักแบบเฉียบพลัน** ซึ่งความปลอดภัยสำคัญที่สุดสำหรับ Meraki ค่ะ",
+                        description: "แอดมินตรวจเช็กแล้ว พบว่าคุณลูกค้ามีอาการ แพ้เมล็ดพืชหลักแบบเฉียบพลัน ซึ่งความปลอดภัยสำคัญที่สุดสำหรับ Meraki ค่ะ",
                         instruction: "แนะนำให้ปรึกษาแพทย์ และไม่แนะนำให้ทานเด็ดขาดค่ะ",
                         color: "text-rose-700",
                         bg: "bg-rose-50",
@@ -209,7 +209,7 @@
                     ENDO_SPECIAL: {
                         title: "สูตรพิเศษสำหรับสาวที่ Sensitive กับ ฮอร์โมน Estrogen 🌸",
                         description: "สำหรับกลุ่ม Endo/Cyst เราเน้นการลดอักเสบและปรับ Estrogen ที่เด่นเกินไปให้สมดุลค่ะ",
-                        instruction: "เน้นลดอักเสบ ปรับ Estrogen ทานเฉพาะ **\"ถุง 2\"** ตลอด 28 วัน พร้อมงดนมวัว/ของทอด",
+                        instruction: "เน้นลดอักเสบ ปรับ Estrogen ทานเฉพาะ ถุง 2 ตลอด 28 วัน พร้อมงดนมวัว/ของทอด",
                         package: "Set B (2+2) For Endo Care",
                         image: "Set B.jpg",
                         price: "1,790.-",
@@ -217,7 +217,7 @@
                     },
                     PCOS_MOON: {
                         title: "ปรับจังหวะตามรอบพระจันทร์ 🌙",
-                        description: "เราจะใช้จังหวะ **New Moon** เป็นตัวกำหนดให้ฮอร์โมนเริ่มทำงานใหม่ เพื่อให้การตกไข่กลับมาสม่ำเสมอค่ะ",
+                        description: "เราจะใช้จังหวะ New Moon เป็นตัวกำหนดให้ฮอร์โมนเริ่มทำงานใหม่ เพื่อให้การตกไข่กลับมาสม่ำเสมอค่ะ",
                         instruction: "ใช้รอบ New Moon กำหนดการเริ่มทานถุง 1 เพื่อให้ฮอร์โมนเริ่มใหม่และตกไข่สม่ำเสมอ",
                         package: "Set A (1+2) PCOS/Weight Care",
                         image: "Set A.jpg",
@@ -261,9 +261,9 @@
                     let msg = "";
                     
                     if (type === 'special') {
-                        msg = "สวัสดีค่ะ ผลประเมินคือ: " + res.copyMsg;
+                        msg = "สวัสดีค่ะ สนใจรับเซต 3 เดือนดูแลพิเศษ (ผลประเมิน: " + res.copyMsg + ")";
                     } else {
-                        msg = "ขอรับเซตทดลอง 1 รอบก่อนค่ะ";
+                        msg = "ขอรับเซตทดลอง 1 รอบก่อนค่ะ (ผลประเมิน: " + res.copyMsg + ")";
                     }
                     
                     window.open(`${baseUrl}${encodeURIComponent(msg)}`);
@@ -271,19 +271,19 @@
 
                 const formatText = (text) => {
                     if (!text) return "";
-                    const parts = text.split(/(\*\*.*?\*\*|<u>.*?<\/u>)/);
+                    // Support for underlining if there are any old tags left, but generally just normal text
+                    const parts = text.split(/(<u>.*?<\/u>)/);
                     return parts.map((part, i) => {
-                        if (part.startsWith('**') && part.endsWith('**')) return <strong key={i} className="font-bold text-[#A51D24]">{part.slice(2, -2)}</strong>;
                         if (part.startsWith('<u>') && part.endsWith('</u>')) return <u key={i} className="underline decoration-red-200 underline-offset-4">{part.slice(3, -4)}</u>;
                         return part;
                     });
                 };
 
                 return (
-                    <div className="space-y-4 animate-in pb-8">
+                    <div className="space-y-6 animate-in pb-10">
                         {/* VIP Slot */}
                         {answers.seriousness >= 9 && answers.contactInfo.phone && (
-                            <div className="p-4 sm:p-5 bg-[#ECFDF5] rounded-3xl sm:rounded-[2rem] border border-green-200 shadow-sm mx-[-1rem] sm:mx-0">
+                            <div className="p-5 bg-[#ECFDF5] rounded-[2rem] border border-green-200 shadow-sm mx-[-0.5rem] sm:mx-0">
                                 <div className="flex items-center gap-2 mb-1">
                                     <Icon name="PhoneCall" className="w-4 h-4 text-green-500" />
                                     <p className="text-[10px] text-green-600 font-bold uppercase tracking-widest">VIP Consultation Slot</p>
@@ -292,41 +292,41 @@
                             </div>
                         )}
 
-                        <div className={`p-5 sm:p-6 rounded-3xl sm:rounded-[2.5rem] ${res.bg || 'bg-[#FDFBF7]'} border border-red-100 shadow-sm mx-[-1rem] sm:mx-0`}>
+                        <div className={`p-5 sm:p-6 rounded-[2rem] sm:rounded-[2.5rem] ${res.bg || 'bg-[#FDFBF7]'} border border-red-100 shadow-sm mx-[-0.5rem] sm:mx-0`}>
                             {/* ALLERGY WARNING - TOP PRIORITY */}
                             {isLatentAllergy && !res.hideCTA && (
-                                <div className="bg-yellow-50 p-4 rounded-2xl sm:rounded-3xl border border-yellow-100 flex gap-3 mb-5 animate-in">
-                                    <Icon name="AlertTriangle" className="text-yellow-600 shrink-0" />
+                                <div className="bg-yellow-50 p-4 rounded-3xl border border-yellow-100 flex gap-3 mb-6 animate-in">
+                                    <Icon name="AlertTriangle" className="text-yellow-600 shrink-0 mt-0.5" />
                                     <div>
                                         <h4 className="text-[11px] font-bold text-yellow-800 uppercase tracking-wider mb-1">คำเตือนเรื่องการแพ้เมล็ดพืช</h4>
                                         <p className="text-[11px] text-yellow-800 leading-relaxed font-medium">
-                                            เนื่องจากคุณลูกค้ามีอาการ <strong className="font-bold text-[#A51D24]">แพ้แบบเล็กน้อยหรือภูมิแฝง</strong> แนะนำให้ <strong className="font-bold text-[#A51D24]">ปรึกษาแพทย์ผู้เชี่ยวชาญก่อนเริ่มรับประทาน</strong> หรือเริ่มต้นทดลองในปริมาณที่น้อยที่สุดเพื่อสังเกตอาการอย่างใกล้ชิดนะคะ
+                                            เนื่องจากคุณลูกค้ามีอาการ <strong className="text-[#A51D24]">แพ้แบบเล็กน้อยหรือภูมิแฝง</strong> แนะนำให้ <strong className="text-[#A51D24]">ปรึกษาแพทย์ผู้เชี่ยวชาญก่อนเริ่มรับประทาน</strong> หรือเริ่มต้นทดลองในปริมาณที่น้อยที่สุดเพื่อสังเกตอาการอย่างใกล้ชิดนะคะ
                                         </p>
                                     </div>
                                 </div>
                             )}
 
-                            <div className="flex justify-between items-start mb-3 sm:mb-4">
-                                <h2 className={`text-lg sm:text-xl font-bold ${res.color || 'text-[#A51D24]'} leading-tight pr-2 sm:pr-4`}>{res.title}</h2>
+                            <div className="flex justify-between items-start mb-4">
+                                <h2 className={`text-xl font-bold ${res.color || 'text-[#A51D24]'} leading-tight pr-4`}>{res.title}</h2>
                                 <Icon name="Sparkles" className="text-[#A51D24] shrink-0" />
                             </div>
                             
-                            <div className="text-gray-700 mb-5 sm:mb-6 leading-relaxed font-medium text-sm">
+                            <div className="text-gray-700 mb-6 leading-relaxed font-medium text-sm">
                                 {answers.nickname && <span className="block mb-1 font-bold text-gray-900 text-base">คุณ {answers.nickname} คะ...</span>}
                                 {formatText(res.description)}
                             </div>
 
-                            <div className="space-y-3 sm:space-y-4">
+                            <div className="space-y-4">
                                 {res.instruction && (
-                                    <div className="bg-white/70 p-3 sm:p-4 rounded-2xl sm:rounded-3xl border border-red-50">
+                                    <div className="bg-white/70 p-4 rounded-3xl border border-red-50">
                                         <h3 className="font-bold text-[#A51D24] mb-1 flex items-center gap-2 text-[10px] uppercase tracking-wider"><Icon name="Target" className="w-3 h-3" /> แนวทางการดูแล</h3>
                                         <p className="text-sm text-gray-800 leading-relaxed font-bold">{formatText(res.instruction)}</p>
                                     </div>
                                 )}
 
                                 {!res.hideCTA && (
-                                    <div className="bg-white rounded-3xl sm:rounded-[2rem] p-3 shadow-sm border border-red-50">
-                                        <div className="w-full aspect-square bg-gray-50 rounded-2xl sm:rounded-[1.5rem] overflow-hidden mb-3 flex items-center justify-center border border-gray-50">
+                                    <div className="bg-white rounded-[2rem] p-3 shadow-sm border border-red-50">
+                                        <div className="w-full aspect-square bg-gray-50 rounded-[1.5rem] overflow-hidden mb-3 flex items-center justify-center border border-gray-50">
                                             <img src={res.image} alt={res.package} className="w-full h-full object-cover" onError={(e) => {
                                                 e.target.style.display = 'none';
                                                 e.target.parentElement.innerHTML = `<div class="text-gray-300 italic text-[10px]">${res.image}</div>`;
@@ -334,12 +334,12 @@
                                         </div>
                                         <div className="px-1">
                                             <h4 className="font-bold text-gray-900 text-sm">{res.package}</h4>
-                                            <div className="flex items-end justify-between mt-1 sm:mt-2">
+                                            <div className="flex items-end justify-between mt-2">
                                                 <div className="flex flex-col">
-                                                    <span className="text-lg sm:text-xl font-black text-[#A51D24] leading-none">{res.price}</span>
+                                                    <span className="text-xl font-black text-[#A51D24] leading-none">{res.price}</span>
                                                     <span className="text-[9px] text-gray-400 uppercase tracking-tighter mt-1">/ รอบเดือน (1 Set)</span>
                                                 </div>
-                                                <div className="bg-red-50 px-2 sm:px-3 py-1 rounded-xl">
+                                                <div className="bg-red-50 px-3 py-1 rounded-xl">
                                                     <p className="text-[10px] font-bold text-[#A51D24]">สำหรับ 28 วัน</p>
                                                 </div>
                                             </div>
@@ -350,17 +350,17 @@
                         </div>
 
                         {!res.hideCTA && (
-                            <div className="space-y-3 mx-[-1rem] sm:mx-0">
+                            <div className="space-y-3 px-1 sm:px-0">
                                 <button 
                                     onClick={() => handleLineCTA('special')}
-                                    className="w-full bg-[#A51D24] text-white font-bold py-4 sm:py-5 rounded-full shadow-lg flex flex-col items-center justify-center transform active:scale-95 transition-all h-[64px] sm:h-[72px]"
+                                    className="w-full bg-[#A51D24] text-white font-bold py-5 rounded-full shadow-lg flex flex-col items-center justify-center transform active:scale-95 transition-all h-[72px]"
                                 >
-                                    <span className="text-sm sm:text-base">รับเซตแนะนำ (ดูแลพิเศษ 3 เดือน) 🌟</span>
-                                    <span className="text-[8px] sm:text-[9px] opacity-80 font-normal uppercase tracking-widest">แนะนำสำหรับการเห็นผลที่ยั่งยืน</span>
+                                    <span className="text-base">รับเซตแนะนำ (ดูแลพิเศษ 3 เดือน) 🌟</span>
+                                    <span className="text-[9px] opacity-80 font-normal uppercase tracking-widest">แนะนำสำหรับการเห็นผลที่ยั่งยืน</span>
                                 </button>
                                 <button 
                                     onClick={() => handleLineCTA('starter')}
-                                    className="w-full bg-white border-2 border-[#A51D24] text-[#A51D24] font-bold py-3 sm:py-4 rounded-full active:scale-95 transition-all h-[50px] sm:h-[56px] text-sm sm:text-base"
+                                    className="w-full bg-white border-2 border-[#A51D24] text-[#A51D24] font-bold py-4 rounded-full active:scale-95 transition-all h-[56px]"
                                 >
                                     ขอเลือก "เซตเริ่มต้น" 1 รอบก่อนค่ะ
                                 </button>
@@ -371,7 +371,7 @@
                         )}
 
                         {res.hideCTA && (
-                             <button onClick={resetQuiz} className="w-full bg-[#A51D24] text-white font-bold py-4 rounded-full shadow-lg active:scale-95 transition-all mx-[-1rem] sm:mx-0 w-[calc(100%+2rem)] sm:w-full">
+                             <button onClick={resetQuiz} className="w-full bg-[#A51D24] text-white font-bold py-4 rounded-full shadow-lg active:scale-95 transition-all mx-[-0.5rem] sm:mx-0" style={{width: 'calc(100% + 1rem)'}}>
                                 เริ่มประเมินใหม่
                              </button>
                         )}
@@ -390,7 +390,7 @@
                         {step > 0 && step < 8 && (
                             <button 
                                 onClick={prevStep} 
-                                className="absolute top-6 right-6 z-20 w-10 h-10 bg-white border border-red-50 rounded-full flex items-center justify-center text-[#A51D24] shadow-sm active:scale-90 transition-transform"
+                                className="absolute top-6 left-6 z-20 w-10 h-10 bg-[#A51D24] border-none rounded-full flex items-center justify-center text-white shadow-md active:scale-90 transition-transform"
                                 title="ย้อนกลับ"
                             >
                                 <Icon name="ChevronLeft" className="w-5 h-5" />
@@ -416,7 +416,7 @@
                                             placeholder="ชื่อเล่นของคุณ..." 
                                             value={answers.nickname}
                                             onChange={(e) => setAnswers({...answers, nickname: e.target.value})}
-                                            className="w-full p-5 rounded-2xl bg-gray-50 border-none focus:ring-2 focus:ring-red-100 text-center font-bold text-lg transition-all"
+                                            className="w-full p-5 rounded-2xl bg-gray-50 border-none focus:ring-2 focus:ring-red-100 text-center font-bold text-lg transition-all outline-none"
                                         />
                                     </div>
                                     <button 
@@ -431,7 +431,7 @@
 
                             {step === 1 && (
                                 <div className="space-y-6 animate-in pt-4">
-                                    <h2 className="text-xl font-bold text-gray-900 leading-tight">เป้าหมายที่คุณ<br/><span className="text-[#A51D24]">ต้องการจัดการ</span></h2>
+                                    <h2 className="text-xl font-bold text-gray-900 leading-tight text-center">เป้าหมายที่คุณ<br/><span className="text-[#A51D24]">ต้องการจัดการ</span></h2>
                                     <div className="grid grid-cols-1 gap-2.5">
                                         {Object.entries(GOAL_LABELS).map(([id, label]) => (
                                             <button key={id} onClick={() => toggleGoal(id)} 
@@ -447,7 +447,7 @@
 
                             {step === 2 && (
                                 <div className="space-y-6 animate-in pt-4">
-                                    <h2 className="text-xl font-bold text-gray-900 leading-tight">รอบประจำเดือนของคุณ<br/><span className="text-[#A51D24]">เป็นอย่างไรคะ?</span></h2>
+                                    <h2 className="text-xl font-bold text-gray-900 leading-tight text-center">รอบประจำเดือนของคุณ<br/><span className="text-[#A51D24]">เป็นอย่างไรคะ?</span></h2>
                                     <div className="grid grid-cols-1 gap-3">
                                         {[
                                             { id: 'regular', label: 'มาสม่ำเสมอ ปกติ' }, 
@@ -467,7 +467,7 @@
 
                             {step === 3 && (
                                 <div className="space-y-6 animate-in pt-4">
-                                    <h2 className="text-xl font-bold text-gray-900 leading-tight">คุณมีภาวะสุขภาพ<br/><span className="text-[#A51D24]">เหล่านี้หรือไม่?</span></h2>
+                                    <h2 className="text-xl font-bold text-gray-900 leading-tight text-center">คุณมีภาวะสุขภาพ<br/><span className="text-[#A51D24]">เหล่านี้หรือไม่?</span></h2>
                                     <div className="grid grid-cols-1 gap-2.5">
                                         {[
                                             { id: 'endo', label: 'เยื่อบุมดลูกเจริญผิดที่' }, { id: 'cysts', label: 'ช็อกโกแลตซีสต์' }, { id: 'fibroids', label: 'เนื้องอกในมดลูก' }, 
@@ -485,7 +485,7 @@
 
                             {step === 4 && (
                                 <div className="space-y-6 animate-in pt-4">
-                                    <h2 className="text-xl font-bold text-gray-900 leading-tight">ประวัติการแพ้เมล็ดพืช</h2>
+                                    <h2 className="text-xl font-bold text-gray-900 leading-tight text-center">ประวัติการแพ้เมล็ดพืช</h2>
                                     <div className="space-y-5">
                                         <div className="grid grid-cols-1 gap-2">
                                             {[
@@ -526,7 +526,7 @@
 
                             {step === 5 && (
                                 <div className="space-y-6 animate-in pt-4">
-                                    <h2 className="text-xl font-bold text-gray-900 leading-tight">การใช้ยาคุมกำเนิด</h2>
+                                    <h2 className="text-xl font-bold text-gray-900 leading-tight text-center">การใช้ยาคุมกำเนิด</h2>
                                     <div className="grid grid-cols-1 gap-3">
                                         {[ 
                                             { id: 'pill', label: 'ทาน/ฉีด/ฝัง ยาคุม' }, 
@@ -569,7 +569,7 @@
                                                 type="tel" placeholder="0xxxxxxxxx" maxLength="10"
                                                 value={answers.contactInfo.phone} 
                                                 onChange={(e) => setAnswers({...answers, contactInfo: {...answers.contactInfo, phone: e.target.value.replace(/\D/g, '')}})}
-                                                className="w-full p-4 rounded-xl border-none text-center font-bold text-2xl tracking-widest shadow-inner focus:ring-1 focus:ring-red-100" 
+                                                className="w-full p-4 rounded-xl border-none text-center font-bold text-2xl tracking-widest shadow-inner focus:ring-1 focus:ring-red-100 outline-none" 
                                             />
                                             <div className="grid grid-cols-2 gap-2">
                                                 {['อังคาร 10:00-11:00', 'เสาร์ 10:00-11:00'].map(slot => (
@@ -624,5 +624,6 @@
     </script>
 </body>
 </html>
+
 
 ```
