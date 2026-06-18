@@ -179,10 +179,11 @@
                 }
             };
 
-            const handleFinalSubmit = () => {
-                submitToGoogleSheets();
-                nextStep();
-            };
+            const handleFinalSubmit = async () => {
+    // Optional: Add a loading state here
+    await submitToGoogleSheets(); 
+    nextStep();
+};
 
             const resultKey = getResult();
 
