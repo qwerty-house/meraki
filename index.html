@@ -345,6 +345,7 @@
                             </div>
                         </div>
 
+                        {/* LINE Message Buttons Area */}
                         <div className="space-y-4 pb-10">
                             {!res.hideCTA && (
                                 <>
@@ -403,7 +404,7 @@
                                         </div>
                                     </div>
                                     <div className="space-y-4">
-                                        <h2 className="text-4xl font-bold text-gray-900 leading-tight">สวัสดีค่ะ<br/><span className="text-[#A51D24]">SIS</span></h2>
+                                        <h2 className="text-4xl font-bold text-gray-900 leading-tight">สวัสดีค่ะ<br/><span className="text-[#A51D24]">คนเก่ง</span></h2>
                                         <p className="text-gray-600 font-medium text-base leading-relaxed px-4 text-center">
                                             แอดมินชวนมาทำแบบประเมินสุขภาพ<br/>เพื่อเลือกสิ่งที่ดีที่สุดให้ร่างกายกันค่ะ
                                         </p>
@@ -543,7 +544,7 @@
                                     <div className="py-10">
                                         <input type="range" min="1" max="10" step="1" value={answers.seriousness} onChange={(e) => setAnswers({...answers, seriousness: parseInt(e.target.value)})}
                                             className="w-full h-2 bg-red-50 rounded-lg appearance-none cursor-pointer accent-[#A51D24]" />
-                                        <div className="flex justify-between mt-4 text-[10px] text-gray-500 font-normal uppercase tracking-widest px-2"><span>1 - สบายๆ</span><span>10 - ต้องดีขึ้นเดี๋ยวนี้</span></div>
+                                        <div className="flex justify-between mt-4 text-[10px] text-gray-600 font-bold uppercase tracking-widest px-2"><span>1 - สบายๆ</span><span>10 - ต้องดีขึ้นเดี๋ยวนี้</span></div>
                                         <div className="mt-10 text-6xl font-black text-[#A51D24] opacity-20">{answers.seriousness}</div>
                                     </div>
                                     <button onClick={nextStep} className="w-full bg-[#A51D24] text-white font-bold py-6 rounded-full shadow-xl">ถัดไป</button>
@@ -599,6 +600,7 @@
                             {step === 8 && <ResultDisplay />}
                         </div>
                     </div>
+                    {}
                     <div className="w-full max-w-md text-center py-8 px-8 space-y-2">
                          <p className="text-[10px] text-gray-500 leading-relaxed font-normal">
                             *ข้อความเหล่านี้ยังไม่ได้รับการประเมินโดยสำนักงานคณะกรรมการอาหารและยา ผลิตภัณฑ์นี้ไม่ได้มีวัตถุประสงค์เพื่อวินิจฉัย บำบัด รักษา หรือป้องกันโรคใดๆ
