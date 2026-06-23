@@ -380,7 +380,7 @@
 
                     <div className="w-full max-w-md bg-white rounded-[3.5rem] shadow-2xl shadow-red-900/5 overflow-hidden border border-red-50/50 relative">
                         
-                        {step > 0 && (
+                        {step > 0 && step < 8 && (
                             <button 
                                 onClick={prevStep} 
                                 className="absolute top-8 left-8 z-10 w-10 h-10 bg-[#A51D24] rounded-full flex items-center justify-center text-white transition-transform active:scale-90 shadow-sm"
