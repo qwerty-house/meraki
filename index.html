@@ -191,7 +191,7 @@
                 const results = {
                     ALLERGY_FORBIDDEN: {
                         title: "โอบกอดความปลอดภัยก่อนนะคะ ⚠️",
-                        groupName: "กลุ่มแพ้เมล็ดพืชเฉียบพลัน",
+                        groupName: "กลุ่มแพ้เมล็ดพืชหลักแบบเฉียบพลัน",
                         description: "แอดมินตรวจเช็กแล้ว พบว่าคุณลูกค้ามีอาการ **แพ้เมล็ดพืชหลักแบบเฉียบพลัน** ซึ่งความปลอดภัยสำคัญที่สุดสำหรับ Meraki ค่ะ",
                         note: "หากมีประวัติการแพ้ แนะนำให้ปรึกษาแพทย์ผู้เชี่ยวชาญก่อนเริ่มรับประทาน หรือเริ่มต้นทดลองในปริมาณที่น้อยที่สุดเพื่อสังเกตอาการอย่างใกล้ชิด แต่หากแพ้เฉียบพลัน <u>ไม่แนะนำให้ทานเด็ดขาด</u> ค่ะ",
                         color: "text-rose-700",
@@ -264,9 +264,8 @@
                     });
                 };
 
-                // ลอจิกการสร้าง Line Message "ผลลัพธ์ + Set + ชื่อปุ่ม"
                 const getLineLink = (btnName) => {
-                    const text = `สวัสดีค่ะ สนใจสั่งซื้อจากผลประเมินฮอร์โมน ผลลัพธ์: ${res.groupName} (${res.package}) -  ${btnName}`;
+                    const text = `สวัสดีค่ะ สนใจสั่งซื้อจากผลประเมินฮอร์โมน ผลลัพธ์: ${res.groupName} (${res.package}) - ${btnName}`;
                     return `https://line.me/R/oaMessage/%40meraki/?${encodeURIComponent(text)}`;
                 };
 
@@ -414,7 +413,7 @@
                                     <div className="space-y-4">
                                         <h2 className="text-4xl font-bold text-gray-900 leading-tight">สวัสดีค่ะ<br/><span className="text-[#A51D24]">SIS</span></h2>
                                         <p className="text-gray-600 font-medium text-base leading-relaxed px-4 text-center">
-                                            แอดมินชวนมาทำแบบประเมินสุขภาพ<br/>เพื่อเลือกสิ่งที่ดีที่สุดให้ร่างกายกันค่ะ
+                                            แอดมินชวนมาทำแบบประเมินสุขภาพเพื่อเลือกสิ่งที่ดีที่สุดให้ร่างกายกันค่ะ
                                         </p>
                                     </div>
                                     <div className="space-y-3 text-center">
