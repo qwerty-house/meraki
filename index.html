@@ -201,7 +201,7 @@
                     ENDO_SPECIAL: {
                         title: "สูตรพิเศษเพื่อมดลูกที่เบาสบาย 🌸",
                         groupName: "กลุ่ม Endo/Cyst",
-                        description: "สำหรับกลุ่ม Endo/Cyst เราเน้นการลดอักเสบและปรับ Estrogen ที่เด่นเกินไปให้สมดุลค่ะ",
+                        description: "for **Endo/Cyst** we focus on reducing inflammation and balancing the dominant Estrogen.",
                         instruction: "ทานเฉพาะ **ถุง 2 (งา+ทานตะวัน)** ตลอดทั้งรอบ 28 วัน พร้อมงดนมวัวและของทอดเพื่อผลลัพธ์ที่ดีที่สุดค่ะ",
                         package: "Set B (2+2) For Endo Care",
                         image: "Set B.jpg",
@@ -211,7 +211,7 @@
                     PCOS_MOON: {
                         title: "ปรับจังหวะตามรอบพระจันทร์ 🌙",
                         groupName: "กลุ่ม PCOS / ลดน้ำหนักยาก",
-                        description: "เราจะใช้จังหวะ **New Moon** เป็นตัวกำหนดให้ฮอร์โมนเริ่มทำงานใหม่ เพื่อให้การตกไข่กลับมาสม่ำเสมอค่ะ",
+                        description: "We will use the **New Moon** rhythm to set a fresh cycle, encouraging consistent ovulation.",
                         instruction: "เริ่ม ถุง 1 ในวัน New Moon 14 วัน และสลับ ถุง 2 อีก 14 วัน ต่อเนื่องอย่างน้อย 6 เดือนค่ะ",
                         package: "Set A (1+2) 6-Month Bundle",
                         image: "Set A.jpg",
@@ -222,7 +222,7 @@
                     PREP_PREGNANCY: {
                         title: "เตรียมบ้านที่อุ่นและสมบูรณ์ที่สุด 👶🏻",
                         groupName: "กลุ่มเตรียมพร้อมมีเบบี๋",
-                        description: "เน้นบำรุงคุณภาพไข่และผนังมดลูกให้นุ่มอุ่น พร้อมสำหรับการฝังตัวของเบบี๋ค่ะ",
+                        description: "We focus on enriching egg quality and thickening the uterine lining so it is warm and welcoming for the baby.",
                         instruction: "ทานสลับ ถุง 1&2 อย่างละ 14 วัน เริ่มวันแรกที่ประจำเดือนมา เพื่อสารอาหารที่จำเป็นต่อการเตรียมตั้งครรภ์ค่ะ",
                         package: "Set A (1+2) Prep Pregnancy",
                         image: "Set A.jpg",
@@ -232,7 +232,7 @@
                     BIRTH_CONTROL_BRIDGE: {
                         title: "สะพานเชื่อมสู่ฮอร์โมนธรรมชาติ 🌿",
                         groupName: "กลุ่มใช้ยาคุม / หยุดยาคุม",
-                        description: "ในช่วงเปลี่ยนผ่านจากรับมาเป็นสร้างฮอร์โมนเอง ร่างกายต้องการเวลาขับฮอร์โมนสังเคราะห์ ฟื้นฟู และเสริมสารอาหารอย่างเต็มที่ การทาน 3 เดือนขึ้นไป จะเห็นผลลัพธ์ที่ชัดเจนค่ะ",
+                        description: "In the transition from synthetic to natural, your body needs time to cleanse, recover, and receive complete nutrition.",
                         instruction: "ทานควบคู่ยาคุมได้ทันที และทานต่อเนื่องหลังหยุดยาเพื่อประคองสมดุลไม่ให้ฮอร์โมนเหวี่ยงค่ะ",
                         package: "Set A (1+2) Monthly Balance",
                         image: "Set A.jpg",
@@ -264,6 +264,7 @@
                     });
                 };
 
+                // Generate LINE OA dynamic deep link based on results and button click
                 const getLineLink = (btnName) => {
                     const text = `สวัสดีค่ะ สนใจสั่งซื้อจากผลประเมินฮอร์โมน ผลลัพธ์: ${res.groupName} (${res.package}) - ${btnName}`;
                     return `https://line.me/R/oaMessage/%40meraki/?${encodeURIComponent(text)}`;
@@ -271,7 +272,7 @@
 
                 return (
                     <div className="space-y-8 animate-in">
-                        {/* VIP Slot First */}
+                        {}
                         {answers.seriousness >= 9 && answers.contactInfo.phone && (
                             <div className="p-7 bg-[#ECFDF5] rounded-[2.5rem] border border-green-200 shadow-sm animate-in">
                                 <div className="flex items-center gap-3 mb-3">
@@ -287,7 +288,8 @@
                             </div>
                         )}
 
-                        <div className={`p-7 rounded-[2.5rem] ${res.bg || 'bg-[#FDFBF7]'} border border-red-100 shadow-sm relative overflow-hidden`}>
+                        {}
+                        <div className={`p-5 sm:p-7 rounded-[2.5rem] ${res.bg || 'bg-[#FDFBF7]'} border border-red-100 shadow-sm relative overflow-hidden`}>
                             <div className="flex justify-between items-start mb-6">
                                 <h2 className={`text-2xl font-bold ${res.color || 'text-[#A51D24]'} leading-tight`}>{res.title}</h2>
                                 <Icon name="Sparkles" className="text-[#A51D24]" />
@@ -352,7 +354,7 @@
                             </div>
                         </div>
 
-                        {/* LINE Message Buttons Area */}
+                        {}
                         <div className="space-y-4 pb-10">
                             {!res.hideCTA && (
                                 <>
@@ -385,7 +387,8 @@
                         <p className="text-red-400 text-[10px] uppercase tracking-[0.3em] font-normal">Nature is the best medicine</p>
                     </div>
 
-                    <div className="w-full max-w-md bg-white rounded-[3.5rem] shadow-2xl shadow-red-900/5 overflow-hidden border border-red-50/50 relative">
+                    {}
+                    <div className="w-full max-w-md md:max-w-lg bg-white rounded-[3.5rem] shadow-2xl shadow-red-900/5 overflow-hidden border border-red-50/50 relative">
                         
                         {step > 0 && (
                             <button 
@@ -402,7 +405,7 @@
                             </div>
                         )}
 
-                        <div className="p-10">
+                        <div className="p-6 sm:p-10">
                             {step === 0 && (
                                 <div className="text-center space-y-8 animate-in">
                                     <div className="relative inline-block">
@@ -416,6 +419,7 @@
                                             แอดมินชวนมาทำแบบประเมินสุขภาพเพื่อเลือกสิ่งที่ดีที่สุดให้ร่างกายกันค่ะ
                                         </p>
                                     </div>
+                                    {}
                                     <div className="space-y-3 text-center">
                                         <p className="text-[11px] text-gray-600 uppercase font-normal tracking-widest italic">ขอทราบชื่อเล่นหน่อยนะคะ</p>
                                         <input 
@@ -459,6 +463,7 @@
                                 </div>
                             )}
 
+                            {}
                             {step === 2 && (
                                 <div className="space-y-8 animate-in pt-6">
                                     <h2 className="text-2xl font-bold text-gray-900 leading-tight">ประจำเดือนของคุณ<br/><span className="text-[#A51D24]">เป็นอย่างไรคะ?</span></h2>
@@ -472,6 +477,7 @@
                                 </div>
                             )}
 
+                            {}
                             {step === 3 && (
                                 <div className="space-y-8 animate-in pt-6">
                                     <h2 className="text-2xl font-bold text-gray-900 leading-tight">คุณมีปัญหาสุขภาพ<br/><span className="text-[#A51D24]">ด้านใดบ้างคะ?</span></h2>
@@ -490,6 +496,7 @@
                                 </div>
                             )}
 
+                            {}
                             {step === 4 && (
                                 <div className="space-y-8 animate-in pt-6">
                                     <h2 className="text-2xl font-bold text-gray-900 leading-tight">ประวัติการแพ้เมล็ดพืช</h2>
@@ -528,10 +535,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button onClick={nextStep} disabled={answers.allergies.length === 0 || !answers.pregnancy} className={`w-full py-5 rounded-full font-bold shadow-xl transition-all ${answers.allergies.length > 0 && answers.pregnancy ? 'bg-[#A51D24] text-white opacity-100' : 'bg-gray-100 text-gray-400 cursor-not-allowed opacity-50'}`}>Confirm</button>
+                                    <button onClick={nextStep} disabled={answers.allergies.length === 0 || !answers.pregnancy} className={`w-full py-5 rounded-full font-bold shadow-xl transition-all ${answers.allergies.length > 0 && answers.pregnancy ? 'bg-[#A51D24] text-white' : 'bg-gray-100 text-gray-400 cursor-not-allowed'}`}>Confirm</button>
                                 </div>
                             )}
 
+                            {}
                             {step === 5 && (
                                 <div className="space-y-8 animate-in pt-6">
                                     <h2 className="text-2xl font-bold text-gray-900 leading-tight">การใช้ยาคุมกำเนิด</h2>
@@ -545,6 +553,7 @@
                                 </div>
                             )}
 
+                            {}
                             {step === 6 && (
                                 <div className="space-y-8 animate-in text-center pt-6">
                                     <h2 className="text-2xl font-bold text-gray-900 leading-tight">คุณจริงจังกับการจัดการ<br/><span className="text-[#A51D24]">ปัญหานี้แค่ไหนคะ?</span></h2>
@@ -558,6 +567,7 @@
                                 </div>
                             )}
 
+                            {}
                             {step === 7 && (
                                 <div className="space-y-8 animate-in pt-6">
                                     {answers.seriousness >= 9 ? (
@@ -569,7 +579,7 @@
                                             </div>
                                             <div className="space-y-4">
                                                 <div className="text-center">
-                                                    <p className="text-[11px] text-gray-500 uppercase font-normal tracking-widest mb-2 italic">ระบุเบอร์โทรศัพท์ 10 หลัก</p>
+                                                    <p className="text-[11px] text-gray-600 uppercase font-normal tracking-widest mb-2 italic">ระบุเบอร์โทรศัพท์ 10 หลัก</p>
                                                     <input 
                                                         type="tel" 
                                                         placeholder="0xxxxxxxxx" 
@@ -607,6 +617,7 @@
                             {step === 8 && <ResultDisplay />}
                         </div>
                     </div>
+                    {}
                     <div className="w-full max-w-md text-center py-8 px-8 space-y-2">
                          <p className="text-[10px] text-gray-500 leading-relaxed font-normal">
                             *ข้อความเหล่านี้ยังไม่ได้รับการประเมินโดยสำนักงานคณะกรรมการอาหารและยา ผลิตภัณฑ์นี้ไม่ได้มีวัตถุประสงค์เพื่อวินิจฉัย บำบัด รักษา หรือป้องกันโรคใดๆ
